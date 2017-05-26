@@ -2,21 +2,23 @@
 @{
     ViewBag.Title = "Login";
 }
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.Label("Kullanıcı Adı", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(x => x.UserName)
+            </div>
+            <div class="form-group">
+                @Html.Label("Parola", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(x => x.Password)
+            </div>
 
-<h2>Login</h2>
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary()
-    <div>
-        @Html.Label("Kullanıcı Adı")
-        @Html.EditorFor(x => x.UserName)
-    </div>
-    <div>
-        @Html.Label("Parola")
-        @Html.EditorFor(x => x.Password)
-    </div>
-
-    <div>
-        <input type="submit" value="Giriş Yap" />
-    </div>
-}
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-5">
+                    <input type="submit" value="Giriş Yap" class="btn btn-primary" />
+                </div>
+            </div>
+         </div>
+            }
