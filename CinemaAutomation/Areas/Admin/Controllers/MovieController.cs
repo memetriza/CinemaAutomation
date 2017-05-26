@@ -12,7 +12,7 @@ namespace CinemaAutomation.Areas.Admin.Controllers
         // GET: Admin/Movie
         public ActionResult Index()
         {
-            return Content("Admin area movie controller index action");
+            return View();
         }
     }
 }

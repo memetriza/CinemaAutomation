@@ -16,7 +16,7 @@ namespace CinemaAutomation.Controllers
             return View(new AuthLogin());
         }
         [HttpPost]
-        public ActionResult Login(AuthLogin user)
+        public ActionResult Login(AuthLogin user, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -24,7 +24,15 @@ namespace CinemaAutomation.Controllers
             }
 
             FormsAuthentication.SetAuthCookie(user.UserName, true);
-            return Content("Valid");
+
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToRoute("Home");
+            }
         }
         public ActionResult Logout()
         {

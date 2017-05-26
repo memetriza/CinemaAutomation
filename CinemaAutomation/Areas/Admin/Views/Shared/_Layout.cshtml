@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Simple Blog Admin</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li>@Html.ActionLink("Filmler", "Index", "Movie", new { area = "admin" }, new { })</li>
+            <li></li>
+            <li class="pull-right">@Html.RouteLink("Anasayfaya Geri Dön", "Home")</li>
+        </ul>
+        @RenderBody()
+    </div>
+    @RenderSection("Scripts", false)
+</body>
+</html>

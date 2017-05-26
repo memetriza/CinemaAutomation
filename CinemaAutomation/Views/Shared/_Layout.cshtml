@@ -20,9 +20,16 @@
                 @Html.RouteLink("SinemaBileti","", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="pull-right"><a href="@Url.RouteUrl("Login") ">Giriş Yap</a></li>
-                    <li class="pull-right"><a href="@Url.RouteUrl("") ">Üye Ol</a></li>
+                <ul class="nav nav-pills">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li class="pull-right"><a href="@Url.RouteUrl("Login")"><i class="glyphicon glyphicon-log-in"></i> Giriş Yap</a></li>
+                    <li class="pull-right"><a href="@Url.RouteUrl("") "><i class="glyphicon glyphicon-plus-sign"></i> Üye Ol</a></li>
+                }
+                else
+                {
+                    <li class="pull-right"><a href="@Url.RouteUrl("Logout") "><i class="glyphicon glyphicon-log-out"></i> Çıkış Yap</a></li>
+                }                                                
                 </ul>
             </div>
         </div>
