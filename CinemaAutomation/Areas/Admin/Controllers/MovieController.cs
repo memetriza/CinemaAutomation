@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CinemaAutomation.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class MovieController : Controller
     {
         // GET: Admin/Movie

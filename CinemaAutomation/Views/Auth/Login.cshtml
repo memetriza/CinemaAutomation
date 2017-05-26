@@ -1,7 +1,22 @@
-﻿
+﻿@model CinemaAutomation.ViewModels.AuthLogin
 @{
     ViewBag.Title = "Login";
 }
 
 <h2>Login</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <div>
+        @Html.Label("Kullanıcı Adı")
+        @Html.EditorFor(x => x.UserName)
+    </div>
+    <div>
+        @Html.Label("Parola")
+        @Html.EditorFor(x => x.Password)
+    </div>
 
+    <div>
+        <input type="submit" value="Giriş Yap" />
+    </div>
+}
