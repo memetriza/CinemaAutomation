@@ -24,7 +24,7 @@
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <li class="pull-right"><a href="@Url.RouteUrl("Login")"><i class="glyphicon glyphicon-log-in"></i> Giriş Yap</a></li>
-                    <li class="pull-right"><a href="@Url.RouteUrl("") "><i class="glyphicon glyphicon-plus-sign"></i> Üye Ol</a></li>
+                    <li class="pull-right"><a href="@Url.RouteUrl("NewAccount") "><i class="glyphicon glyphicon-plus-sign"></i> Üye Ol</a></li>
                 }
                 else
                 {

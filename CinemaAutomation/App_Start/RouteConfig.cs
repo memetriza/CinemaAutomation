@@ -16,6 +16,7 @@ namespace CinemaAutomation
             routes.MapRoute("Home", "", new { controller = "Home", action = "Index" });
             routes.MapRoute("Login", "login", new { controller = "Auth", action = "Login" });
             routes.MapRoute("Logout", "logout", new { controller = "Auth", action = "Logout" });
+            routes.MapRoute("NewAccount", "uyeol", new { controller = "Account", action = "New" });
         }
     }
 }

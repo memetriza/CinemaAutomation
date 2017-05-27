@@ -2,18 +2,38 @@
 @{
     ViewBag.Title = "Index";
 }
-<ul>
-    @if (Model.Users.Any())
-    {
-        foreach (var user in Model.Users)
+<a href="@Url.Action("New")" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i>Üye Oluştur</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Kullanıcı Adı</th>
+            <th>Email</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Roller</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
         {
-            <li>@user.Username</li>
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@user.Name</td>
+                <td>@user.SurName</td>
+                <td>@string.Join(",", user.Roles.Select(p => p.Name))</td>
+                <td>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
+                        <a href="#" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-lock"></i>Parola Sıfırla</a>
+                        <a href="#" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i>Sil</a>
+                    </div>
+                </td>
+            </tr>
         }
-    }
-    else
-    {
-        <li><p>There is no user.</p></li>
-    }
 
-</ul>
-
+    </tbody>
+</table>

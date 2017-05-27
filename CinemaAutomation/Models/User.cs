@@ -17,6 +17,10 @@ namespace CinemaAutomation.Models
         public virtual string SurName { get; set; }
         public virtual string TcNo { get; set; }
         public virtual IList<Role> Roles { get; set; }
+        public virtual void SetPassword(string Password)
+        {
+            PasswordHash = "Ignore me";
+        }
         public User()
         {
             Roles = new List<Role>();
