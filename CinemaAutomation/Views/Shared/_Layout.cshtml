@@ -20,7 +20,7 @@
                 @Html.RouteLink("SinemaBileti","", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav nav-pills">
+                <ul class="nav navbar-btn">
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <li class="pull-right"><a href="@Url.RouteUrl("Login")"><i class="glyphicon glyphicon-log-in"></i> Giriş Yap</a></li>
@@ -29,6 +29,12 @@
                 else
                 {
                     <li class="pull-right"><a href="@Url.RouteUrl("Logout") "><i class="glyphicon glyphicon-log-out"></i> Çıkış Yap</a></li>
+                    <li class="pull-right"><a href="@Url.RouteUrl("Edit",new { id=CinemaAutomation.Infrastructure.Helpers.GetUsersId(User.Identity.Name)})"><i class="glyphicon glyphicon-user"></i> @User.Identity.Name</a></li>
+                    if (User.IsInRole("admin"))
+                    {
+                        <li class="pull-right">@Html.ActionLink("Filmler", "Index", "Movie", new { area = "admin" }, new { })</li>
+                        <li class="pull-right">@Html.ActionLink("Üyeler", "Index", "Users", new { area = "admin" }, new { })</li>
+                    }                    
                 }                                                
                 </ul>
             </div>

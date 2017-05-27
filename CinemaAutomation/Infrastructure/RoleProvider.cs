@@ -47,7 +47,7 @@ namespace CinemaAutomation.Infrastructure
 
         public override string[] GetRolesForUser(string username)
         {
-            return new string[] { "admin" };
+            return Auth.User.Roles.Select(r => r.Name).ToArray();
 
         }
 

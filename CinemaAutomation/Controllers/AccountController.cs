@@ -39,5 +39,42 @@ namespace CinemaAutomation.Controllers
             Database.Session.Save(user);
             return RedirectToRoute("Home");
         }
+        public ActionResult Edit(int id)
+        {
+            var user = Database.Session.Load<User>(id);
+            if (user == null)
+                return HttpNotFound();
+
+            return View(new AccountEdit
+            {
+                Username = user.Username,
+                Email = user.Email,
+                Name = user.Name,
+                Surname = user.SurName,
+                Tcno = user.TcNo
+            });
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, AccountEdit form)
+        {
+            var user = Database.Session.Load<User>(id);
+            if (user == null)
+                return HttpNotFound();
+
+            if (Database.Session.Query<User>().Any(u => u.Username == form.Username && u.Id != id))
+                ModelState.AddModelError("Username", "Kullanıcı adı eşsiz olmalıdır.");
+
+            if (!ModelState.IsValid)
+                return View(form);
+
+            user.Name = form.Name;
+            user.SurName = form.Surname;
+            user.TcNo = form.Tcno;
+
+            Database.Session.Update(user);
+            Database.Session.Flush();
+            return RedirectToRoute("Home");
+        }
     }
 }

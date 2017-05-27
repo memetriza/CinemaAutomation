@@ -23,4 +23,17 @@ namespace CinemaAutomation.ViewModels
             public string Tcno { get; set; }
 
     }
+    public class AccountEdit
+    {
+        public string Username { get; set; }
+
+        public string Email { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public string Surname { get; set; }
+        [Required]
+        public string Tcno { get; set; }
+
+    }
 }

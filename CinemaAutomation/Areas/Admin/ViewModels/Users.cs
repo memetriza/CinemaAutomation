@@ -1,12 +1,16 @@
 ﻿using CinemaAutomation.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace CinemaAutomation.Areas.Admin.ViewModels
 {
+    public class RoleCheckBox
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public bool IsChecked { get; set; }
+
+    }
     public class UsersIndex
     {
         public IEnumerable<User> Users { get; set; }
@@ -14,6 +18,8 @@ namespace CinemaAutomation.Areas.Admin.ViewModels
 
     public class UsersNew
     {
+        public IList<RoleCheckBox> Roles { get; set; }
+
         [Required]
         public string Username { get; set; }
         [Required,DataType(DataType.Password)]
@@ -31,6 +37,7 @@ namespace CinemaAutomation.Areas.Admin.ViewModels
 
     public class UsersEdit
     {
+        public IList<RoleCheckBox> Roles { get; set; }
         [Required]
         public string Username { get; set; }
 
