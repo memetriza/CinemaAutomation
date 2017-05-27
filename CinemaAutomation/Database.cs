@@ -26,7 +26,10 @@ namespace CinemaAutomation
 
             var mapper = new ModelMapper();
             mapper.AddMapping<UserMap>();
+            mapper.AddMapping<RoleMap>();
+
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
+
             _sessionFactory = config.BuildSessionFactory();
         }
         public static void OpenSession()

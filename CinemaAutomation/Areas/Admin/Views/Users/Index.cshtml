@@ -1,0 +1,19 @@
+﻿@model CinemaAutomation.Areas.Admin.ViewModels.UsersIndex
+@{
+    ViewBag.Title = "Index";
+}
+<ul>
+    @if (Model.Users.Any())
+    {
+        foreach (var user in Model.Users)
+        {
+            <li>@user.Username</li>
+        }
+    }
+    else
+    {
+        <li><p>There is no user.</p></li>
+    }
+
+</ul>
+

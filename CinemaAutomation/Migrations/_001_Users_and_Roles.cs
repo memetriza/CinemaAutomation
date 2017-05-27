@@ -23,10 +23,11 @@ namespace CinemaAutomation.Migrations
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("username").AsString(128)
                 .WithColumn("email").AsCustom("VARCHAR(256)")
+                .WithColumn("password_hash").AsString(128)
                 .WithColumn("name").AsString(128)
                 .WithColumn("surname").AsString(128)
-                .WithColumn("tcno").AsString()
-                .WithColumn("password_hash").AsString(128);
+                .WithColumn("tcno").AsString();
+                
 
             Create.Table("roles")
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()
