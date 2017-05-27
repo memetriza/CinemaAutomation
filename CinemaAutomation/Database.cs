@@ -27,6 +27,8 @@ namespace CinemaAutomation
             var mapper = new ModelMapper();
             mapper.AddMapping<UserMap>();
             mapper.AddMapping<RoleMap>();
+            mapper.AddMapping<MovieMap>();
+            mapper.AddMapping<GenreMap>();
 
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
 

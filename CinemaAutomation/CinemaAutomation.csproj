@@ -192,6 +192,9 @@
     <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Infrastructure\TransactionFilter.cs" />
     <Compile Include="Migrations\_001_Users_and_Roles.cs" />
+    <Compile Include="Migrations\_002_Movies_and_Genres.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
