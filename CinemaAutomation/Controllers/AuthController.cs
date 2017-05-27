@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using CinemaAutomation.ViewModels;
+using NHibernate.Linq;
+using CinemaAutomation.Models;
 
 namespace CinemaAutomation.Controllers
 {
@@ -16,23 +18,27 @@ namespace CinemaAutomation.Controllers
             return View(new AuthLogin());
         }
         [HttpPost]
-        public ActionResult Login(AuthLogin user, string returnUrl)
+        public ActionResult Login(AuthLogin form, string returnUrl)
         {
+            var user = Database.Session.Query<User>().FirstOrDefault(u => u.Username == form.UserName);
+
+            if (user == null)
+                CinemaAutomation.Models.User.FakeHash();
+
+            if (user == null || !user.CheckPassword(form.Password))
+                ModelState.AddModelError("Username","Kullanıcı adı veya şifre yanlış");
+
             if (!ModelState.IsValid)
             {
-                return View(user);
+                return View(form);
             }
 
-            FormsAuthentication.SetAuthCookie(user.UserName, true);
+            FormsAuthentication.SetAuthCookie(user.Username, true);
 
             if (!string.IsNullOrWhiteSpace(returnUrl))
-            {
                 return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToRoute("Home");
-            }
+
+            return RedirectToRoute("Home");
         }
         public ActionResult Logout()
         {

@@ -9,6 +9,10 @@ namespace CinemaAutomation.Models
 {
     public class User
     {
+        public static void FakeHash()
+        {
+            BCrypt.Net.BCrypt.HashPassword("", 13);
+        }
         public virtual int Id { get; set; }
         public virtual string Username { get; set; }
         public virtual string Email { get; set; }
@@ -19,7 +23,11 @@ namespace CinemaAutomation.Models
         public virtual IList<Role> Roles { get; set; }
         public virtual void SetPassword(string Password)
         {
-            PasswordHash = "Ignore me";
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(Password, 13);
+        }
+        public virtual bool CheckPassword (string password)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, PasswordHash);
         }
         public User()
         {

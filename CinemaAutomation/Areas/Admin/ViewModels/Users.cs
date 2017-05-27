@@ -28,4 +28,28 @@ namespace CinemaAutomation.Areas.Admin.ViewModels
         public string Tcno { get; set; }
 
     }
+
+    public class UsersEdit
+    {
+        [Required]
+        public string Username { get; set; }
+
+        [Required, DataType(DataType.EmailAddress), MaxLength(256)]
+        public string Email { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public string Surname { get; set; }
+        [Required]
+        public string Tcno { get; set; }
+
+    }
+    public class UsersResetPassword
+    {
+
+        public string Username { get; set; }
+        [Required, DataType(DataType.Password)]
+        public string Password { get; set; }
+
+    }
 }

@@ -27,9 +27,9 @@
                 <td>@string.Join(",", user.Roles.Select(p => p.Name))</td>
                 <td>
                     <div class="btn-group">
-                        <a href="#" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
-                        <a href="#" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-lock"></i>Parola Sıfırla</a>
-                        <a href="#" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove"></i>Sil</a>
+                        <a href="@Url.Action("edit",new { user.Id } )" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
+                        <a href="@Url.Action("resetPassword",new { user.Id } )" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-lock"></i>Parola Sıfırla</a>
+                        <a href="@Url.Action("delete",new { user.Id } )" class="btn btn-danger btn-xs" data-post="Are you sure you want to delete @user.Username?"><i class="glyphicon glyphicon-remove"></i>Sil</a>
                     </div>
                 </td>
             </tr>
