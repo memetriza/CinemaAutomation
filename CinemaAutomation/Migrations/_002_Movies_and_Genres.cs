@@ -24,7 +24,8 @@ namespace CinemaAutomation.Migrations
                 .WithColumn("moviename").AsString()
                 .WithColumn("moviedirector").AsString()
                 .WithColumn("releasedate").AsDateTime()
-                .WithColumn("summary").AsString()
+                .WithColumn("summary").AsCustom("TEXT")
+                .WithColumn("linktext").AsString()
                 .WithColumn("created_at").AsDateTime()
                 .WithColumn("updated_at").AsDateTime().Nullable()
                 .WithColumn("deleted_at").AsDateTime().Nullable();

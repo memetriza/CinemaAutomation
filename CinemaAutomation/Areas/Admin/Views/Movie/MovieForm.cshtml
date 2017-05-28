@@ -1,0 +1,59 @@
+﻿@model CinemaAutomation.Areas.Admin.ViewModels.MoviesForm
+
+<h3>@(Model.IsNew ? "Film Ekle" : "Film Düzenle")</h3>
+
+@using (Html.BeginForm("MovieForm", "Movie"))
+{
+    if (!Model.IsNew)
+    {
+        @Html.HiddenFor(m=>m.MovieId)
+    }
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-lg-8 form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.Label("Film Adı", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(m => m.MovieName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Yıl", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                   
+                    <input type="date" name="ReleaseDate" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Yönetmen", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(m => m.MovieDirector, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Fotoğraf linki", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(m => m.LinkText, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Özet", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">
+                    @Html.EditorFor(m => m.Summary, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">Film İşlemleri</div>
+                <div class="panel-body">
+                    <input type="submit" value="@(Model.IsNew ? "Filmi Ekle":"Kaydet")" class="btn btn-success btn-sm" />
+                    <a href="@Url.Action("Index")"> Vazgeç</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+}

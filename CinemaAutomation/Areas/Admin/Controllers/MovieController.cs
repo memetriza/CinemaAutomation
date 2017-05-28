@@ -28,5 +28,48 @@ namespace CinemaAutomation.Areas.Admin.Controllers
                 Movies=new PagedData<Movie>(currentMoviePage,totalMovieCount,page,MoviesPerPage)
             });
         }
+        public ActionResult New()
+        {
+            return View("MovieForm", new MoviesForm
+            {
+                IsNew = true
+            });
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult MovieForm(MoviesForm form)
+        {
+            form.IsNew = form.MovieId == null;
+
+            if (!ModelState.IsValid)
+                return View(form);
+
+            Movie movie;
+            if (form.IsNew)
+            {
+                movie = new Movie
+                {
+                    CreatedAt = DateTime.UtcNow,
+                };
+            }
+            else
+            {
+                movie = Database.Session.Load<Movie>(form.MovieId);
+                if (movie == null)
+                    return HttpNotFound();
+                movie.UpdatedAt = DateTime.UtcNow;
+            }
+            movie.MovieName = form.MovieName;
+            movie.MovieDirector = form.MovieDirector;
+            movie.ReleaseDate = form.ReleaseDate;
+            movie.Summary = form.Summary;
+            movie.LinkText = form.LinkText;
+            Database.Session.SaveOrUpdate(movie);
+            Database.Session.Flush();
+
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

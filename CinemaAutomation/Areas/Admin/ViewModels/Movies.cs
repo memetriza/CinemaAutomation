@@ -19,28 +19,22 @@ namespace CinemaAutomation.Areas.Admin.ViewModels
     {
         public PagedData<Movie> Movies { get; set; }
     }
-    public class MovieNew
+    public class MoviesForm
     {
-        public IList<GenreCheckBox> Genres { get; set; }
-        [Required]
+        public bool IsNew { get; set; }
+        public int? MovieId { get; set; }
+
+        [Required, MaxLength(128)]
         public string MovieName { get; set; }
-        [Required]
+
+        [Required, MaxLength(128)]
         public string MovieDirector { get; set; }
+
         [Required, DataType(DataType.DateTime)]
         public DateTime ReleaseDate { get; set; }
-        [Required]
-        public string Summary { get; set; }
-    }
-    public class MovieEdit
-    {
-        public IList<GenreCheckBox> Genres { get; set; }
-        [Required]
-        public string MovieName { get; set; }
-        [Required]
-        public string MovieDirector { get; set; }
-        [Required,DataType(DataType.DateTime)]
-        public DateTime ReleaseDate { get; set; }
-        [Required]
+        [Required,DataType(DataType.Url)]
+        public string LinkText { get; set; }
+        [Required, DataType(DataType.MultilineText)]
         public string Summary { get; set; }
     }
 }

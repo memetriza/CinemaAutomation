@@ -15,6 +15,7 @@ namespace CinemaAutomation.Models
         public virtual string MovieDirector { get; set; }
         public virtual DateTime ReleaseDate { get; set; }
         public virtual string Summary { get; set; }
+        public virtual string LinkText { get; set; }
 
         public virtual DateTime CreatedAt { get; set; }
         public virtual DateTime? UpdatedAt { get; set; }
@@ -37,6 +38,7 @@ namespace CinemaAutomation.Models
             Property(x => x.MovieDirector, x => x.NotNullable(true));
             Property(x => x.ReleaseDate, x => x.NotNullable(true));
             Property(x => x.Summary, x => x.NotNullable(true));
+            Property(x => x.LinkText, x => x.NotNullable(true));
             Property(x => x.CreatedAt, x =>
             {
                 x.Column("created_at");

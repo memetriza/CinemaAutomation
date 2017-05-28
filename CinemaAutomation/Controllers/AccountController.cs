@@ -39,6 +39,7 @@ namespace CinemaAutomation.Controllers
             Database.Session.Save(user);
             return RedirectToRoute("Home");
         }
+
         public ActionResult Edit(int id)
         {
             var user = Database.Session.Load<User>(id);
