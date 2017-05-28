@@ -19,7 +19,7 @@ namespace CinemaAutomation.Migrations
 
         public override void Up()
         {
-            Create.Table("Movies")
+            Create.Table("movies")
                 .WithColumn("id").AsInt32().Identity().PrimaryKey()
                 .WithColumn("moviename").AsString()
                 .WithColumn("moviedirector").AsString()
@@ -30,13 +30,13 @@ namespace CinemaAutomation.Migrations
                 .WithColumn("updated_at").AsDateTime().Nullable()
                 .WithColumn("deleted_at").AsDateTime().Nullable();
 
-            Create.Table("Genres")
+            Create.Table("genres")
                 .WithColumn("id").AsInt32().Identity().PrimaryKey()
                 .WithColumn("genrename").AsString(128);
 
             Create.Table("movie_genre")
-                .WithColumn("movie_id").AsInt32().ForeignKey("Movies", "id").OnDelete(Rule.Cascade)
-                .WithColumn("genre_id").AsInt32().ForeignKey("Genres", "id").OnDelete(Rule.Cascade);
+                .WithColumn("movie_id").AsInt32().ForeignKey("movies", "id").OnDelete(Rule.Cascade)
+                .WithColumn("genre_id").AsInt32().ForeignKey("genres", "id").OnDelete(Rule.Cascade);
         }
     }
 }

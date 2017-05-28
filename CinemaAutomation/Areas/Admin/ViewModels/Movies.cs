@@ -21,6 +21,7 @@ namespace CinemaAutomation.Areas.Admin.ViewModels
     }
     public class MoviesForm
     {
+        public IList<GenreCheckBox> Genres { get; set; }
         public bool IsNew { get; set; }
         public int? MovieId { get; set; }
 

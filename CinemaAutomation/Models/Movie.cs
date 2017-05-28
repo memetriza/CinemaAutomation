@@ -32,7 +32,7 @@ namespace CinemaAutomation.Models
     {
         public MovieMap()
         {
-            Table("Movies");
+            Table("movies");
             Id(x => x.Id, x => x.Generator(Generators.Identity));
             Property(x => x.MovieName, x => x.NotNullable(true));
             Property(x => x.MovieDirector, x => x.NotNullable(true));
@@ -47,10 +47,9 @@ namespace CinemaAutomation.Models
             });
             Property(x => x.UpdatedAt, x => x.Column("updated_at"));
             Property(x => x.DeletedAt, x => x.Column("deleted_at"));
-            Bag(x => x.Genres, x =>
-            {
-                x.Key(y => y.Column("movie_id"));
+            Bag(x => x.Genres, x =>{
                 x.Table("movie_genre");
+                x.Key(y => y.Column("movie_id"));                
             }, x => x.ManyToMany(y => y.Column("genre_id")));
         }
     }

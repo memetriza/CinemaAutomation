@@ -162,6 +162,7 @@
     <Content Include="Areas\Admin\Views\Users\ResetPassword.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_RoleEditor.cshtml" />
     <Content Include="Areas\Admin\Views\Movie\MovieForm.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_GenreEditor.cshtml" />
     <None Include="scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />

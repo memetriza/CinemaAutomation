@@ -31,9 +31,36 @@ namespace CinemaAutomation.Areas.Admin.Controllers
         public ActionResult New()
         {
             return View("MovieForm", new MoviesForm
-            {
-                IsNew = true
+            {   IsNew = true,
+                Genres = Database.Session.Query<Genre>().Select(g => new GenreCheckBox
+                {
+                    Id = g.Id,
+                    IsChecked = false,
+                    Name = g.GenreName
+                }).ToList()
             });
+        }
+
+        private void SyncGenres(IList<GenreCheckBox> checkboxes, IList<Genre> genres)
+        {
+            var selectedGenres = new List<Genre>();
+
+            foreach (var genre in Database.Session.Query<Genre>())
+            {
+                var checkbox = checkboxes.Single(p => p.Id == genre.Id);
+                checkbox.Name = genre.GenreName;
+
+                if (checkbox.IsChecked)
+                    selectedGenres.Add(genre);
+            }
+
+            foreach (var toAdd in selectedGenres.Where(t => !genres.Contains(t)))
+            {
+                genres.Add(toAdd);
+            }
+
+            foreach (var toRemove in genres.Where(t => !selectedGenres.Contains(t)).ToList())
+                genres.Remove(toRemove);
         }
 
         [HttpPost, ValidateInput(false)]
@@ -44,7 +71,8 @@ namespace CinemaAutomation.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(form);
 
-            Movie movie;
+            var movie = new Movie();
+            SyncGenres(form.Genres, movie.Genres);
             if (form.IsNew)
             {
                 movie = new Movie

@@ -44,6 +44,9 @@
                     @Html.EditorFor(m => m.Summary, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             </div>
+            <div>
+                @Html.Partial("_GenreEditor",Model.Genres)
+            </div>
         </div>
         <div class="col-lg-4">
             <div class="panel panel-info">
