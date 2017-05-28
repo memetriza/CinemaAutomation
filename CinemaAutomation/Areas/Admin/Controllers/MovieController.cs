@@ -73,12 +73,14 @@ namespace CinemaAutomation.Areas.Admin.Controllers
 
             var movie = new Movie();
             SyncGenres(form.Genres, movie.Genres);
+
             if (form.IsNew)
             {
                 movie = new Movie
                 {
                     CreatedAt = DateTime.UtcNow,
                 };
+                SyncGenres(form.Genres, movie.Genres);
             }
             else
             {
