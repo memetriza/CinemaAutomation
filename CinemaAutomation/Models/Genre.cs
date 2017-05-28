@@ -17,7 +17,7 @@ namespace CinemaAutomation.Models
     {
         public GenreMap()
         {
-            Table("Genre");
+            Table("Genres");
             Id(x => x.Id, x => x.Generator(Generators.Identity));
             Property(x => x.GenreName, x => x.NotNullable(true));
 

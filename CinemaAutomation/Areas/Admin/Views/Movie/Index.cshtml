@@ -1,5 +1,55 @@
-﻿@{
+﻿@model CinemaAutomation.Areas.Admin.ViewModels.MoviesIndex
+@{
     ViewBag.Title = "Filmler";
 }
-<h2>Filmler</h2>
+
+<div class="btn-toolbar">
+    <div class="btn-group">
+        <a href="#" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i>Film Ekle</a>
+    </div>
+    <div class="btn-group pull-right">
+        @if (Model.Movies.HasPreviousPage)
+        {
+            <a href="@Url.Action("Index",new { Page=Model.Movies.PreviousPage})" class="btn btn-primary btn-sm">
+                <i class="glyphicon glyphicon-chevron-left"></i>Önceki Sayfa
+            </a>
+        }
+        else
+        {
+            <a href="#" class="btn btn-default btn-disabled btn-sm">
+                <i class="glyphicon glyphicon-chevron-left"></i>Önceki Sayfa
+            </a>
+        }
+
+        @if (Model.Movies.HasNextPage)
+        {
+            <a href="@Url.Action("Index",new { Page=Model.Movies.NextPage})" class="btn btn-primary btn-sm">
+                Sonraki Sayfa<i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+        else
+        {
+            <a href="#" class="btn btn-default btn-disabled btn-sm">
+                Sonraki Sayfa <i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Film</th>
+                <th>Yıl</th>
+                <th>Yönetmen</th>
+            </tr>
+        </thead>
+    </table>
+
+
+
+
+
+
+</div>
+
 

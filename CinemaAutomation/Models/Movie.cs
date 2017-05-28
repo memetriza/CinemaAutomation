@@ -21,7 +21,7 @@ namespace CinemaAutomation.Models
         public virtual DateTime? DeletedAt { get; set; }
 
         public virtual bool IsDeleted { get { return DeletedAt != null; }}
-        public IList<Genre> Genres { get; set; }
+        public virtual IList<Genre> Genres { get; set; }
         public Movie()
         {
             Genres = new List<Genre>();
@@ -31,7 +31,7 @@ namespace CinemaAutomation.Models
     {
         public MovieMap()
         {
-            Table("Movie");
+            Table("Movies");
             Id(x => x.Id, x => x.Generator(Generators.Identity));
             Property(x => x.MovieName, x => x.NotNullable(true));
             Property(x => x.MovieDirector, x => x.NotNullable(true));

@@ -12,6 +12,7 @@
             <li>@Html.ActionLink("Üyeler", "Index", "Users", new { area = "admin" }, new { })</li>
             <li class="pull-right">@Html.RouteLink("Anasayfaya Geri Dön", "Home")</li>
         </ul>
+        <hr />
         @RenderBody()
     </div>
     @RenderSection("Scripts", false)
