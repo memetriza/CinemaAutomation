@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Optimization;
 
-namespace CinemaAutomation
+namespace CinemaAutomation.App_Start
 {
     public class BundleConfig
     {
@@ -19,7 +19,7 @@ namespace CinemaAutomation
             bundles.Add(
                     new StyleBundle("~/styles")
                     .Include("~/Content/bootstrap.css")
-                    .Include("~/Content/styles/Site.css")
+                    .Include("~/Content/Site.css")
 
                 );
 

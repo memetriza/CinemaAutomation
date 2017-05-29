@@ -3,7 +3,7 @@
 
         e.preventDefault();
         var $this = $(this);
-        var message = $this.data("movie");
+        var message = $this.data("post");
 
 
         if (message && !confirm(message)) {

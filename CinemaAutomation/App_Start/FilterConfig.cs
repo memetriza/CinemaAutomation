@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace CinemaAutomation.App_Start
+namespace CinemaAutomation
 {
     public class FilterConfig
     {

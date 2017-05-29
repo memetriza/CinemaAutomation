@@ -103,9 +103,11 @@ namespace CinemaAutomation.Areas.Admin.Controllers
         {
             var movie = Database.Session.Load<Movie>(id);
             if (movie == null)
+            {
                 return HttpNotFound();
-
-            return View("MovieForm", new MoviesForm {
+            }else
+            {
+                return View("MovieForm", new MoviesForm {
                 IsNew = false,
                 MovieId = id,
                 MovieName = movie.MovieName,
@@ -118,9 +120,51 @@ namespace CinemaAutomation.Areas.Admin.Controllers
                     Id = g.Id,
                     IsChecked = movie.Genres.Contains(g),
                     Name = g.GenreName
-                }).ToList()
-            });
+                    }).ToList()
+                });
+            }            
         }
 
+        public ActionResult Trash(int id)
+        {
+            var movie = Database.Session.Load<Movie>(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+                            
+            movie.DeletedAt = DateTime.UtcNow;
+            Database.Session.Update(movie);
+            Database.Session.Flush();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var movie = Database.Session.Load<Movie>(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            Database.Session.Delete(movie);
+            Database.Session.Flush();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Restore(int id)
+        {
+            var movie = Database.Session.Load<Movie>(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                movie.DeletedAt = null;
+                Database.Session.Update(movie);
+                Database.Session.Flush();
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

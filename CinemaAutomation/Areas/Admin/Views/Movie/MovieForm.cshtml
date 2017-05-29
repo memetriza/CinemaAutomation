@@ -1,6 +1,6 @@
 ﻿@model CinemaAutomation.Areas.Admin.ViewModels.MoviesForm
 
-<h3>@(Model.IsNew ? "Film Ekle" : "Film Düzenle")</h3>
+<h4 class="h4" style="text-align:center"><i class="glyphicon glyphicon-film"></i>@(Model.IsNew ? " Film Ekle" : " Film Düzenle")</h4>
 
 @using (Html.BeginForm("MovieForm", "Movie"))
 {

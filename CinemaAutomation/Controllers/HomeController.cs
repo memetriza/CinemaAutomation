@@ -18,14 +18,15 @@ namespace CinemaAutomation.Controllers
         {
             var totalMovieCount = Database.Session.Query<Movie>().Count();
             var currentMoviePage = Database.Session.Query<Movie>()
-                .OrderByDescending(c => c.CreatedAt)
+                .OrderByDescending(c => c.ReleaseDate)
                 .Skip((page - 1) * MoviesPerPage)
                 .Take(MoviesPerPage)
                 .ToList();
 
+            var cMoviePage = currentMoviePage.Where(a => a.IsDeleted == false);
             return View(new MoviesIndex
             {
-                Movies = new PagedData<Movie>(currentMoviePage, totalMovieCount, page, MoviesPerPage)
+                Movies = new PagedData<Movie>(cMoviePage, totalMovieCount, page, MoviesPerPage)
             });
             
         }
