@@ -12,6 +12,7 @@ namespace CinemaAutomation.Models
     {
         public virtual int Id { get; set; }
         public virtual string MovieName { get; set; }
+        //public virtual string Slug { get; set; }
         public virtual string MovieDirector { get; set; }
         public virtual DateTime ReleaseDate { get; set; }
         public virtual string Summary { get; set; }
@@ -35,6 +36,7 @@ namespace CinemaAutomation.Models
             Table("movies");
             Id(x => x.Id, x => x.Generator(Generators.Identity));
             Property(x => x.MovieName, x => x.NotNullable(true));
+            //Property(x => x.Slug, x => x.NotNullable(true));
             Property(x => x.MovieDirector, x => x.NotNullable(true));
             Property(x => x.ReleaseDate, x => x.NotNullable(true));
             Property(x => x.Summary, x => x.NotNullable(true));

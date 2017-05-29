@@ -3,7 +3,7 @@
 
         e.preventDefault();
         var $this = $(this);
-        var message = $this.data("post");
+        var message = $this.data("movie");
 
 
         if (message && !confirm(message)) {
@@ -19,3 +19,25 @@
 
     });
 });
+
+$("[data-slug]").each(
+    function () {
+        var $this = $(this);
+        var $sendSlugFrom = $($this.data("slug"));
+
+        $sendSlugFrom.keyup(function () {
+
+            var slug = $sendSlugFrom.val();
+            slug = slug.replace(/[^a-zA-Z0-9\s]/g, "");
+            slug = slug.toLowerCase();
+            slug = slug.replace(/\s+/g, "-");
+
+            if (slug.charAt(slug.lenght - 1) == "-") {
+                slug = slug.substr(0, slug.lenght - 1)
+            }
+
+            $this.val(slug);
+
+        });
+
+    });

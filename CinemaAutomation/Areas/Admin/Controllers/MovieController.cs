@@ -72,7 +72,6 @@ namespace CinemaAutomation.Areas.Admin.Controllers
                 return View(form);
 
             var movie = new Movie();
-            SyncGenres(form.Genres, movie.Genres);
 
             if (form.IsNew)
             {
@@ -94,12 +93,34 @@ namespace CinemaAutomation.Areas.Admin.Controllers
             movie.ReleaseDate = form.ReleaseDate;
             movie.Summary = form.Summary;
             movie.LinkText = form.LinkText;
+            SyncGenres(form.Genres, movie.Genres);
             Database.Session.SaveOrUpdate(movie);
             Database.Session.Flush();
 
             return RedirectToAction("Index");
         }
+        public ActionResult Edit(int id)
+        {
+            var movie = Database.Session.Load<Movie>(id);
+            if (movie == null)
+                return HttpNotFound();
 
+            return View("MovieForm", new MoviesForm {
+                IsNew = false,
+                MovieId = id,
+                MovieName = movie.MovieName,
+                MovieDirector = movie.MovieDirector,
+                Summary = movie.Summary,
+                LinkText = movie.LinkText,
+                ReleaseDate=movie.ReleaseDate,
+                Genres = Database.Session.Query<Genre>().Select(g => new GenreCheckBox
+                {
+                    Id = g.Id,
+                    IsChecked = movie.Genres.Contains(g),
+                    Name = g.GenreName
+                }).ToList()
+            });
+        }
 
     }
 }

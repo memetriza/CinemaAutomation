@@ -43,17 +43,31 @@ namespace CinemaAutomation.Controllers
         public ActionResult Edit(int id)
         {
             var user = Database.Session.Load<User>(id);
-            if (user == null)
-                return HttpNotFound();
 
-            return View(new AccountEdit
+            if (user != null)
             {
-                Username = user.Username,
-                Email = user.Email,
-                Name = user.Name,
-                Surname = user.SurName,
-                Tcno = user.TcNo
-            });
+                if (User.Identity.Name == user.Username)
+                {
+                    return View(new AccountEdit
+                    {
+                        Username = user.Username,
+                        Email = user.Email,
+                        Name = user.Name,
+                        Surname = user.SurName,
+                        Tcno = user.TcNo
+                    });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+                
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+            
         }
 
         [HttpPost, ValidateAntiForgeryToken]

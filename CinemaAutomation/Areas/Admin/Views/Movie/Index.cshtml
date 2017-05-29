@@ -65,12 +65,12 @@
                         {
                             <div class="btn-group btn-group-xs">
                                 <a href="@Url.Action("edit",new {movie.Id })" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Düzenle</a>
-                                <a href="@Url.Action("trash", new { movie.Id })" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i>Çöp</a>
+                                <a href="@Url.Action("trash", new { movie.Id })" class="btn btn-danger" data-post="Filmi kaldırmak atmak istediğinizden emin misiniz ?"><i class="glyphicon glyphicon-remove"></i>Çöp</a>
 
                                 <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="@Url.Action("delete",new { movie.Id})"><i class="glyphicon glyphicon-remove"></i>Sil</a>
+                                        <a href="@Url.Action("delete",new { movie.Id})" data-post="Filmi tamamen silmek istediğinizden emin misiniz ?"><i class="glyphicon glyphicon-remove"></i>Sil</a>
                                     </li>
                                 </ul>
 

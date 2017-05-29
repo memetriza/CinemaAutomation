@@ -12,7 +12,7 @@ namespace CinemaAutomation.Controllers
 {
     public class HomeController : Controller
     {
-        private const int MoviesPerPage = 5;
+        private const int MoviesPerPage = 10;
         // GET: Home
         public ActionResult Index(int page=1)
         {

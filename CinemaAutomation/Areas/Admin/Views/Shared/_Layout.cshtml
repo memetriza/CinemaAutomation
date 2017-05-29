@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Sinema Bileti Admin</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @Styles.Render("~/admin/styles")
 </head>
 <body>
     <div class="container">
@@ -15,6 +16,7 @@
         <hr />
         @RenderBody()
     </div>
+    @Scripts.Render("~/admin/scripts")
     @RenderSection("Scripts", false)
 </body>
 </html>
