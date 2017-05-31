@@ -37,5 +37,7 @@ namespace CinemaAutomation.Areas.Admin.ViewModels
         public string LinkText { get; set; }
         [Required, DataType(DataType.MultilineText)]
         public string Summary { get; set; }
+        [Required]
+        public string Slug { get; set; }
     }
 }

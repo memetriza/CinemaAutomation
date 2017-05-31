@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace CinemaAutomation.Areas.Admin.Controllers
 {
-    [Authorize(Roles ="admin")]
+    [Authorize(Roles ="admin , yonetici")]
     public class MovieController : Controller
     {
         private const int MoviesPerPage = 5;
@@ -93,6 +93,7 @@ namespace CinemaAutomation.Areas.Admin.Controllers
             movie.ReleaseDate = form.ReleaseDate;
             movie.Summary = form.Summary;
             movie.LinkText = form.LinkText;
+            movie.Slug = form.Slug;
             SyncGenres(form.Genres, movie.Genres);
             Database.Session.SaveOrUpdate(movie);
             Database.Session.Flush();
@@ -114,6 +115,7 @@ namespace CinemaAutomation.Areas.Admin.Controllers
                 MovieDirector = movie.MovieDirector,
                 Summary = movie.Summary,
                 LinkText = movie.LinkText,
+                Slug=movie.Slug,
                 ReleaseDate=movie.ReleaseDate,
                 Genres = Database.Session.Query<Genre>().Select(g => new GenreCheckBox
                 {

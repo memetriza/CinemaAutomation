@@ -1,7 +1,7 @@
 ﻿@model CinemaAutomation.Areas.Admin.ViewModels.MoviesForm
 
 <h4 class="h4" style="text-align:center"><i class="glyphicon glyphicon-film"></i>@(Model.IsNew ? " Film Ekle" : " Film Düzenle")</h4>
-
+<hr />
 @using (Html.BeginForm("MovieForm", "Movie"))
 {
     if (!Model.IsNew)
@@ -20,10 +20,15 @@
                 </div>
             </div>
             <div class="form-group">
-                @Html.Label("Yıl", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.Label("Slug", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-7">
-                   
-                    <input type="date" name="ReleaseDate" />
+                    @Html.EditorFor(m => m.Slug, new { htmlAttributes = new { @class = "form-control", data_slug = "#MovieName" } })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Yıl", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-7">                  
+                    <input type="date" name="ReleaseDate" id="ReleaseDate" class="form-control" />
                 </div>
             </div>
             <div class="form-group">

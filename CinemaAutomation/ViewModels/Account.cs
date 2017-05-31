@@ -34,6 +34,8 @@ namespace CinemaAutomation.ViewModels
         public string Surname { get; set; }
         [Required]
         public string Tcno { get; set; }
+        [Required,DataType(DataType.Password)]
+        public string Password { get; set; }
 
     }
 }

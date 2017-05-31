@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace CinemaAutomation.Controllers
 {
@@ -37,6 +38,7 @@ namespace CinemaAutomation.Controllers
             };
             user.SetPassword(form.Password);
             Database.Session.Save(user);
+            FormsAuthentication.SetAuthCookie(user.Username, true);
             return RedirectToRoute("Home");
         }
 
@@ -86,6 +88,7 @@ namespace CinemaAutomation.Controllers
             user.Name = form.Name;
             user.SurName = form.Surname;
             user.TcNo = form.Tcno;
+            user.SetPassword(form.Password);
 
             Database.Session.Update(user);
             Database.Session.Flush();

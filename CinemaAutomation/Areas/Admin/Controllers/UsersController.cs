@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace CinemaAutomation.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "admin , yonetici")]
     public class UsersController : Controller
     {
         // GET: Admin/Users
