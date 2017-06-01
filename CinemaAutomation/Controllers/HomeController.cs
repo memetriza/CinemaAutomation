@@ -30,5 +30,9 @@ namespace CinemaAutomation.Controllers
             });
             
         }
+        public ActionResult BuyTicket()
+        {
+            return View();
+        }
     }
 }

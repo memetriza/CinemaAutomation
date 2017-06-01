@@ -158,10 +158,13 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\bg2.png" />
+    <Content Include="Content\images\kltDolu.png" />
+    <Content Include="Content\images\kltSecilen.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\page img.png" />
     <Content Include="Content\images\search.png" />
     <Content Include="Content\images\signal.png" />
+    <Content Include="Content\images\kltBos.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\opensans_light_macroman\stylesheet.css" />
@@ -236,10 +239,12 @@
     <Compile Include="Infrastructure\TransactionFilter.cs" />
     <Compile Include="Migrations\_001_Users_and_Roles.cs" />
     <Compile Include="Migrations\_002_Movies_and_Genres.cs" />
-    <Compile Include="Migrations\_003_AddSlugToMovie.cs" />
+    <Compile Include="Migrations\_003_Saloon_Seance_Ticket.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Saloon.cs" />
+    <Compile Include="Models\Seance.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account.cs" />
@@ -259,6 +264,7 @@
     <Content Include="Views\Account\New.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Shared\_404_Not.cshtml" />
+    <Content Include="Views\Home\BuyTicket.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
